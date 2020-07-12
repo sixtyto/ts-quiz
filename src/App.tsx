@@ -32,10 +32,10 @@ const App = () => {
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
   const nextQuestion = () => {};
   return (
-    <div>
+    <>
       <h1>Typescript Quiz Game</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <button onClick={startQuiz}>Start</button>
+        <button type="button" onClick={startQuiz}>Start</button>
       ) : null}
       <p>Score: {score}</p>
       {loading && <p>Loading Question...</p>}
@@ -49,8 +49,13 @@ const App = () => {
           totalQuestions={TOTAL_QUESTIONS}
         />
       )}
-      <button onClick={nextQuestion}>Next Question</button>
-    </div>
+      {!gameOver &&
+      !loading &&
+      userAnswers.length === number + 1 &&
+      number !== TOTAL_QUESTIONS ? (
+        <button onClick={nextQuestion}>Next Question</button>
+      ) : null}
+    </>
   );
 };
 
