@@ -34,9 +34,11 @@ const App = () => {
   return (
     <div>
       <h1>Typescript Quiz Game</h1>
-      <button onClick={startQuiz}>Start</button>
+      {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+        <button onClick={startQuiz}>Start</button>
+      ) : null}
       <p>Score: {score}</p>
-      <p>Loading Question...</p>
+      {loading && <p>Loading Question...</p>}
       {/* <QuestionCard
         question={questions[number]}
         answers={questions[number]}
