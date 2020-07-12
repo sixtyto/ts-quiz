@@ -39,14 +39,16 @@ const App = () => {
       ) : null}
       <p>Score: {score}</p>
       {loading && <p>Loading Question...</p>}
-      {/* <QuestionCard
-        question={questions[number]}
-        answers={questions[number]}
-        callback={checkAnswer}
-        userAnswer={userAnswers ? userAnswers[number] : null}
-        questionNumber={number + 1}
-        totalQuestions={TOTAL_QUESTIONS}
-      /> */}
+      {!loading && !gameOver && (
+        <QuestionCard
+          question={questions[number].question}
+          answers={questions[number].answers}
+          callback={checkAnswer}
+          userAnswer={userAnswers ? userAnswers[number] : null}
+          questionNumber={number + 1}
+          totalQuestions={TOTAL_QUESTIONS}
+        />
+      )}
       <button onClick={nextQuestion}>Next Question</button>
     </div>
   );
