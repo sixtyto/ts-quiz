@@ -43,7 +43,14 @@ const App = () => {
       setUserAnswers(prev => [...prev, answerObject]);
     }
   };
-  const nextQuestion = () => {};
+  const nextQuestion = () => {
+    const nextQuestion = number + 1;
+    if (nextQuestion === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQuestion);
+    }
+  };
   return (
     <>
       <h1>Typescript Quiz Game</h1>
@@ -67,7 +74,7 @@ const App = () => {
       {!gameOver &&
       !loading &&
       userAnswers.length === number + 1 &&
-      number !== TOTAL_QUESTIONS ? (
+      number !== TOTAL_QUESTIONS - 1 ? (
         <button type="button" onClick={nextQuestion}>
           Next Question
         </button>
