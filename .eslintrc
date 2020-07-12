@@ -2,10 +2,11 @@
   "extends": [
     "airbnb",
     "prettier",
+    "prettier/react",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+    "prettier/@typescript-eslint"
   ],
+  "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "parserOptions": {
@@ -21,6 +22,8 @@
     }
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "react/prop-types": "off",
+    "import/extensions": "off"
   }
 }

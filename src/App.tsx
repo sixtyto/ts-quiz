@@ -44,11 +44,11 @@ const App = () => {
     }
   };
   const nextQuestion = () => {
-    const nextQuestion = number + 1;
-    if (nextQuestion === TOTAL_QUESTIONS) {
+    const next: number = number + 1;
+    if (next === TOTAL_QUESTIONS) {
       setGameOver(true);
     } else {
-      setNumber(nextQuestion);
+      setNumber(next);
     }
   };
   return (
