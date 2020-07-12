@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fetchQuizQuestions, Difficulty, QuestionState } from './API';
 import QuestionCard from './components/QuestionCard';
-import { GlobalStyles } from './App.styles';
+import { Wrapper, Title, Score, StyledButton } from './App.styles';
 
 const TOTAL_QUESTIONS = 10;
 const DIFFICULTY = Difficulty.EASY;
@@ -54,15 +54,14 @@ const App = () => {
   };
   return (
     <>
-      <GlobalStyles />
-      <div>
-        <h1>Typescript Quiz Game</h1>
+      <Wrapper>
+        <Title>Typescript Quiz Game</Title>
         {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-          <button type="button" onClick={startQuiz}>
+          <StyledButton type="button" onClick={startQuiz}>
             Start
-          </button>
+          </StyledButton>
         ) : null}
-        <p>Score: {score}</p>
+        <Score>Score: {score}</Score>
         {loading && <p>Loading Question...</p>}
         {!loading && !gameOver && (
           <QuestionCard
@@ -78,11 +77,11 @@ const App = () => {
         !loading &&
         userAnswers.length === number + 1 &&
         number !== TOTAL_QUESTIONS - 1 ? (
-          <button type="button" onClick={nextQuestion}>
+          <StyledButton type="button" onClick={nextQuestion}>
             Next Question
-          </button>
+          </StyledButton>
         ) : null}
-      </div>
+      </Wrapper>
     </>
   );
 };
