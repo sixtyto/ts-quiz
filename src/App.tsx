@@ -3,6 +3,7 @@ import { fetchQuizQuestions, Difficulty, QuestionState } from './API';
 import QuestionCard from './components/QuestionCard';
 
 const TOTAL_QUESTIONS = 10;
+const DIFFICULTY = Difficulty.EASY;
 
 type AnswerObject = {
   question: string;
@@ -18,10 +19,18 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
-  const startQuiz = async () => {};
+  const startQuiz = async () => {
+    setLoading(true);
+    setGameOver(false);
+    const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS, DIFFICULTY);
+    setQuestions(newQuestions);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false);
+  };
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
   const nextQuestion = () => {};
-  console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY));
   return (
     <div>
       <h1>Typescript Quiz Game</h1>
